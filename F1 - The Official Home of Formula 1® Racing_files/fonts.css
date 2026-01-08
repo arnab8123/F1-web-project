@@ -1,0 +1,251 @@
+/* Formula1 */
+
+@font-face {
+  font-family: "Formula1";
+  src: url("./fonts/formula1/Formula1-Regular.woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Formula1";
+  src: url("./fonts/formula1/Formula1-Bold.woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Formula1";
+  src: url("./fonts/formula1/Formula1-Black.woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Formula1";
+  src: url("./fonts/formula1/Formula1-Italic.woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Formula1Wide";
+  src: url("./fonts/formula1/Formula1-Wide.woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Formula1Digits";
+  src: url("./fonts/formula1/Formula1-Year.woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Titillium Web */
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-Light.ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-LightItalic.ttf");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Titillium Web";
+  src: url("./fonts/titillium/TitilliumWeb-SemiBoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* APAX Tag Heuer */
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Thin.woff2");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Light.woff2");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Regular.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Medium.woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Bold-Italic.woff2");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Superbold.woff2");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Thin-Italic.woff2");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Light-Italic.woff2");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Italic.woff2");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Medium-Italic.woff2");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Bold.woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Apax TAG Heuer";
+  src: url("./fonts/apax-th/Apax-TAG-Heuer-Superbold-Italic.woff2");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* KH Interference */
+
+@font-face {
+  font-family: "KH Interference";
+  src: url("./fonts/kh-interference/KHInterference-Regular.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "KH Interference";
+  src: url("./fonts/kh-interference/KHInterference-Bold.woff2");
+  font-weight: 700;
+}
+
+/* KH Interference F1 */
+
+@font-face {
+  font-family: "KH Interference F1";
+  src: url("./fonts/kh-interference-f1/KHInterferenceF1-Regular.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "KH Interference F1";
+  src: url("./fonts/kh-interference-f1/KHInterferenceF1-Bold.woff2");
+  font-weight: 700;
+}
+
+/* Northwell */
+
+@font-face {
+  font-family: "Northwell";
+  src: url("./fonts/northwell/northwell.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Northwell Clean";
+  src: url("./fonts/northwell/northwell-clean.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Northwell Alt";
+  src: url("./fonts/northwell/northwell-alt.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Northwell Clean Alt";
+  src: url("./fonts/northwell/northwell-clean-alt.woff2");
+  font-weight: 400;
+}
+
+/* Formula1 Player Icons */
+
+@font-face {
+  font-family: "F1PlayerIcons";
+  src: url("./fonts/formula1-player-icons/Formula1-Player-Icon.woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* To be removed */
+@font-face {
+  font-family: "NorthwellCleanAlt";
+  src: url("./fonts/northwell/northwell-clean-alt.woff2");
+  font-weight: 400;
+}

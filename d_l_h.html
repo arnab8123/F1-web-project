@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<title>Driver Profile</title>
+
+<style>
+:root
+{
+    --team-color:#dc0000;  /* details */
+    --bg-dark:#000;
+    --text-main:aliceblue;
+    --font-main:"Orbitron",sans-serif;
+    --font-news:"Bebas Neue",sans-serif;
+    --font-header:"Titillium Web",sans-serif;
+    --radius:20px;
+    --transition:0.35s ease;
+}
+
+*
+{
+    box-sizing:border-box;
+}
+
+body
+{
+    margin:0;
+    background:var(--bg-dark);
+    color:var(--text-main);
+    font-family:var(--font-header);
+}
+
+.driver-hero
+{
+    position:relative;
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    padding:0 80px;
+    overflow:hidden;
+}
+
+.driver-hero::after
+{
+    content:"";
+    position:absolute;
+    inset:auto 0 0 0;
+    height:35%;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0),
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,1)
+    );
+    z-index:4;
+}
+
+.driver-bg
+{
+    position:absolute;
+    inset:0;
+    background:url("drivers/Ferrari/7b911c67-1a9f-4287-8d6c-dd3f3c325cc3.png") center/cover no-repeat; /* details */
+    filter:brightness(0.35);
+    z-index:1;
+}
+
+.driver-img
+{
+    position:absolute;
+    right:5%;
+    bottom:-10%;
+    height:110%;
+    z-index:2;
+    opacity:0;
+    transform:translateX(120px) scale(0.95);
+    transition:transform 1s cubic-bezier(.25,.8,.25,1), opacity 1s ease;
+}
+
+.driver-img.reveal
+{
+    opacity:1;
+    transform:translateX(0) scale(1);
+}
+
+.driver-info
+{
+    position:relative;
+    z-index:3;
+    max-width:620px;
+}
+
+.driver-number
+{
+    font-family:var(--font-main);
+    font-size:130px;
+    text-shadow:
+        0 0 6px var(--team-color),
+        0 0 16px var(--team-color),
+        0 0 28px var(--team-color);
+}
+
+.driver-name
+{
+    font-family:var(--font-news);
+    font-size:90px;
+    letter-spacing:6px;
+    margin:-25px 0 10px;
+}
+
+.driver-team
+{
+    font-size:26px;
+    letter-spacing:2px;
+    opacity:0.8;
+}
+
+.stats
+{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+    padding:80px;
+}
+
+.stat-card
+{
+    background:#111;
+    border-radius:var(--radius);
+    padding:35px;
+    text-align:center;
+    transition:transform var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover
+{
+    transform:translateY(-10px);
+    box-shadow:0 18px 45px color-mix(in srgb, var(--team-color) 45%, transparent);
+}
+
+.stat-value
+{
+    font-family:var(--font-main);
+    font-size:52px;
+}
+.stat-value_1
+{
+    font-family:var(--font-main);
+    font-size:52px;
+}
+
+.stat-label_1
+{
+    margin-top:10px;
+    letter-spacing:2px;
+    opacity:0.7;
+}
+
+.stat-label
+{
+    margin-top:10px;
+    letter-spacing:2px;
+    opacity:0.7;
+}
+
+.bio
+{
+    padding:60px 80px;
+    max-width:1000px;
+}
+
+.bio h2
+{
+    font-family:var(--font-news);
+    font-size:50px;
+    letter-spacing:4px;
+}
+
+.bio p
+{
+    line-height:1.8;
+    opacity:0.85;
+}
+
+.media
+{
+    padding:120px 80px;
+}
+
+.car-reveal-box
+{
+    position:relative;
+    height:420px;
+    border-radius:var(--radius);
+    background:#000;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.car-light
+{
+    position:absolute;
+    width:130%;
+    height:130%;
+    background:radial-gradient(
+        circle at center,
+        color-mix(in srgb, var(--team-color) 35%, transparent) 0%,
+        color-mix(in srgb, var(--team-color) 18%, transparent) 25%,
+        rgba(0,0,0,0) 65%
+    );
+    filter:blur(70px);
+    opacity:0.55;
+    transition:opacity 0.6s ease, transform 0.6s ease;
+    pointer-events:none;
+}
+
+.media-car
+{
+    max-width:90%;
+    position:relative;
+    z-index:2;
+    opacity:0;
+    transform:translateY(120px) scale(0.9);
+    transition:transform 1.2s cubic-bezier(.25,.8,.25,1), opacity 1.2s ease, filter 0.6s ease;
+}
+
+.media-car.reveal
+{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.car-reveal-box:hover .media-car
+{
+    transform:translateY(-10px) scale(1.03) rotateZ(-0.4deg);
+    filter:
+        drop-shadow(0 30px 60px rgba(0,0,0,0.85))
+        0 0 30px
+    color-mix(in srgb, var(--team-color) 45%, transparent)
+}
+
+.car-reveal-box:hover .car-light
+{
+    opacity:0.9;
+    transform:scale(1.1);
+}
+
+.divider
+{
+    height:6px;
+    background:linear-gradient(90deg,transparent,var(--team-color),transparent);
+    margin:100px 0;
+}
+
+@media(max-width:768px)
+{
+    .driver-hero
+    {
+        flex-direction:column;
+        padding:120px 30px;
+    }
+
+    .driver-img
+    {
+        position:relative;
+        width:100%;
+        height:auto;
+        right:auto;
+        bottom:auto;
+        margin-top:40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="driver-hero">
+    <div class="driver-bg"></div>
+
+    <img class="driver-img" src="drivers/Ferrari/LewisHamilton/lewham01.png">  <!-- details -->
+
+    <div class="driver-info">  <!-- details -->
+        <div class="driver-number">44</div>
+        <div class="driver-name">Lewis Hamilton</div>
+        <div class="driver-team">Scuderia Ferrari</div>
+    </div>
+</section>
+
+<section class="stats">  <!-- details -->
+    <div class="stat-card">
+        <div class="stat-value" data-value="7">0</div>
+        <div class="stat-label">WORLD TITLES</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="380">0</div>
+        <div class="stat-label">RACES</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="105">0</div>
+        <div class="stat-label">WINS</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="202">0</div>
+        <div class="stat-label">PODIUMS</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="104">0</div>
+        <div class="stat-label">POLES</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="10">0</div>
+        <div class="stat-label">CAR NUMBER</div>
+    </div>
+    <div class="stat-card"><div class="stat-value_1">British</div><div class="stat-label_1">NATIONALITY</div></div>
+    <div class="stat-card">
+        <div class="stat-value" data-value="3">0</div>
+        <div class="stat-label">TEAMS</div>
+    </div>
+</section>
+
+<section class="bio">
+    <h2>DRIVER PROFILE</h2>
+    <p>  <!-- details -->
+        Seven-time world champion Lewis Hamilton is chasing his eighth world title in 2025 with the iconic Ferrari. The Briton dominated Formula 1 from 2014 to 2020 with Mercedes and will therefore be racing for the Italian Formula 1 team in 2025 with Charles Leclerc as his teammate.
+    </p>
+</section>
+
+<section class="media">
+    <div class="car-reveal-box">
+        <div class="car-light"></div>
+        <img class="media-car" src="cars/ferrari.webp"> <!-- details -->
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () =>
+{
+    const heroCar = document.querySelector(".driver-img");
+    if(heroCar)
+    {
+        setTimeout(() => heroCar.classList.add("reveal"), 400);
+    }
+
+    const mediaCar = document.querySelector(".media-car");
+    if(!mediaCar) return;
+
+    const observer = new IntersectionObserver(entries =>
+    {
+        entries.forEach(entry =>
+        {
+            if(entry.isIntersecting)
+            {
+                mediaCar.classList.add("reveal");
+                observer.disconnect();
+            }
+        });
+    }, { threshold:0.4 });
+
+    observer.observe(mediaCar);
+});
+const counters = document.querySelectorAll(".stat-value");
+
+const animateCounter = (el) => 
+{
+    const target = +el.dataset.value;
+    let count = 0;
+    const speed = target / 80;
+
+    const update = () => 
+    {
+        count += speed;
+        if(count < target)
+        {
+            el.textContent = Math.floor(count);
+            requestAnimationFrame(update);
+        } else 
+        {
+            el.textContent = target;
+        }
+    };
+    update();
+};
+const observer = new IntersectionObserver(entries => 
+{
+    entries.forEach(entry => 
+    {
+        if(entry.isIntersecting)
+        {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+        }
+    });
+},
+{ threshold:0.6 });
+counters.forEach(counter => observer.observe(counter));
+</script>
+
+</body>
+</html>
