@@ -103,6 +103,10 @@ html, body {
     display: flex;
     gap: 30px;
 }
+#mobile-menu-btn .mobile-menu
+{
+    display: none;
+}
 .m_class 
 {
     transition: var(--default_transformation);
@@ -1074,6 +1078,10 @@ html, body {
         float: right;
         display: flex;
         gap: 30px;
+    }
+
+    #mobile-menu-btn .mobile-menu{
+        display: none;
     }
 
     .m_class {
@@ -2164,3 +2172,773 @@ html, body {
 
 
 }
+
+
+
+
+@media screen and (max-width: 768px) {
+
+body {
+    background-color: var(--color-bg-dark);
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#page_loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+#loader_gif {
+    width: 200px;
+    height: auto;
+}
+
+#menu {
+    background: var(--color-bg-dark);
+    height: 70px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 1px solid #333;
+}
+
+#m_logo {
+    height: 40px;
+    width: 180px;
+}
+
+#fia_logo, #fia_logo_75 {
+    height: 100%;
+    width: auto;
+    transition: var(--default_transition);
+}
+
+#fia_logo_75 {
+    display: none;
+}
+
+#menu_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#m_options {
+    display: none; /* Hidden on mobile */
+}
+/* Mobile Menu Button */
+#mobile-menu-btn {
+    width: 30px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Increased z-index */
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 15px; /* Added spacing */
+}
+
+#mobile-menu-btn span {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s ease;
+    display: block;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: -120%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(0, 0, 0, 0.98); /* Darker background for better contrast */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Changed from 20px */
+    z-index: 1000;
+    transition: left 0.4s ease;
+    overflow-y: auto;
+}
+
+#mobile-menu.active {
+    left: 0;
+}
+
+#mobile-menu a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 15px 0; /* Increased padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+}
+
+#mobile-menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 15px;
+}
+
+/* Close menu when clicking outside */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Menu container adjustments */
+#menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+    position: relative;
+    z-index: 1002;
+}
+
+#menu_right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#fia_menu {
+    width: 35px;
+    height: 25px;
+}
+
+.fia_menu_img_white, .fia_menu_img_red {
+    width: 100%;
+    height: 100%;
+    transition: var(--default_transition);
+}
+
+.fia_menu_img_red {
+    display: none;
+}
+
+#fia_menu:hover .fia_menu_img_white {
+    display: none;
+}
+
+#fia_menu:hover .fia_menu_img_red {
+    display: block;
+}
+
+/* Hero Section - Mobile */
+#hero {
+    padding: 20px 15px;
+}
+
+#body_img {
+    width: 100%;
+    height: 250px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#body_media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#body_video, #b_img, #b_img_hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+/* Show video by default, hide images */
+#body_video {
+    opacity: 1;
+    z-index: 1;
+}
+
+#b_img, #b_img_hover {
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+/* When video has ended, show main image */
+#body_img.video-ended #body_video {
+    opacity: 0;
+}
+
+#body_img.video-ended #b_img {
+    opacity: 1;
+}
+
+/* Show hover image on hover when video has ended */
+#body_img.video-ended:hover #b_img_hover {
+    opacity: 1;
+}
+
+#body_img.video-ended:hover #b_img {
+    opacity: 0;
+}
+
+#video_controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    opacity: 0.9;
+}
+
+#video_controls button {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#video_controls button:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+/* Hero News - Mobile */
+#hero_news {
+    width: 100%;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+#hero_news_scroll {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 5px;
+}
+
+.hero_news_box {
+    height: 150px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hero_news_box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero_news_text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-family: var(--font-news);
+    font-size: 18px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    z-index: 2;
+}
+
+/* Car Box - Mobile */
+#car_box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px 15px;
+}
+
+.cars {
+    height: 120px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+}
+
+.cars_img {
+    width: 80%;
+    height: auto;
+    transition: var(--default_transition);
+}
+
+.cars_hover {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transform: scale(0);
+    transition: var(--default_transition);
+}
+
+.cars:hover .cars_img {
+    opacity: 0.3;
+}
+
+.cars:hover .cars_hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Drivers Box - Mobile */
+#drivers_box {
+    padding: 20px 15px;
+}
+
+#drivers_box_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#drivers_box_nav_text {
+    color: white;
+    font-family: var(--font-news);
+    font-size: 18px;
+}
+
+#drivers_box_nav_rev, #drivers_box_nav_for {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#drivers_box_scrolable {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+}
+
+#drivers_box_scrolable::-webkit-scrollbar {
+    display: none;
+}
+
+.driver_box {
+    min-width: 180px;
+    height: 280px;
+    background: #1a1a1a;
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.driver_img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90%;
+    transition: var(--default_transition);
+}
+
+.driver_back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.driver_text {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#NV_Tittle_header {
+    padding: 30px 15px 20px;
+}
+
+#NV_lim {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+#NV_Tittle {
+    text-align: center;
+    position: relative;
+}
+
+#NV_Tittle p {
+    color: white;
+    font-family: var(--font-news);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#NV_Tittle_bg {
+    position: absolute;
+    width: 100%;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+}
+
+/* YouTube Shorts - Mobile */
+#yt_box, #ytv_box {
+    padding: 20px 15px;
+}
+
+#yt_box_nav, #ytv_box_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#yt_box_nav_text, #ytv_box_nav_text {
+    color: white;
+    font-family: var(--font-news);
+    font-size: 18px;
+}
+
+#yt_box_nav_rev, #yt_box_nav_for,
+#ytv_box_nav_rev, #ytv_box_nav_for {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#yt_box_scrolable, #ytv_box_scrolable {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    scrollbar-width: none;
+}
+
+#yt_box_scrolable::-webkit-scrollbar,
+#ytv_box_scrolable::-webkit-scrollbar {
+    display: none;
+}
+
+.yt_vd_box {
+    width: 165px;
+    height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.ytv_vd_box {
+    min-width: 200px;
+    height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.yt_thumb, .ytv_thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.yt_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: var(--default_transition);
+}
+
+.yt_vd_box:hover .yt_video {
+    opacity: 1;
+}
+
+.yt_mute_btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.yt_text, .ytv_text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+    font-family: var(--font-news);
+    font-size: 16px;
+}
+
+.ytv_play_btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(225, 6, 0, 0.8);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* News Grid - Mobile */
+.news {
+    padding: 20px 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.box_big, .box_tall {
+    height: 200px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+.box_big img, .box_tall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.box_big:hover img, .box_tall:hover img {
+    transform: scale(1.1);
+}
+
+.news_text {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    color: white;
+    font-family: var(--font-news);
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Switch/Podium - Mobile */
+.switch_wrapper {
+    padding: 20px 15px;
+}
+
+.switch_nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.switch_btn {
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-main);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.switch_btn.active {
+    background: var(--color-primary);
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.card {
+    width: 100px;
+    background: #1a1a1a;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.p_card-center { height: 180px; }
+.p_card-left { height: 160px; }
+.p_card-right { height: 140px; }
+
+.t_card-center { height: 180px; }
+.t_card-left { height: 160px; }
+.t_card-right { height: 140px; }
+
+.img-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer - Mobile */
+.footer-divider {
+    height: 4px;
+    background: var(--color-primary);
+    margin: 40px 0 0;
+}
+
+#f1_footer {
+    background: var(--color-bg-dark);
+    padding: 30px 15px;
+    color: rgba(255,255,255,0.75);
+}
+
+.footer_top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer_brand img {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.footer_brand p {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+.footer_links h4 {
+    color: white;
+    font-family: var(--font-main);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer_links a {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: var(--default_transition);
+}
+
+.footer_links a:hover {
+    color: white;
+    transform: translateX(5px);
+}
+
+.footer_bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer_bottom span {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.footer_note {
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+/* Modal - Mobile */
+#ytv_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 15px;
+}
+
+#ytv_modal_video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+}
+
+#ytv_modal_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+}
+
+   

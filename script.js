@@ -197,3 +197,131 @@ window.addEventListener("load", () =>
 
     },GIF_DURATION);
 });
+
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+document.body.appendChild(overlay);
+
+if (mobileMenuBtn && mobileMenu) {
+    // Toggle menu function
+    function toggleMenu() {
+        const isActive = mobileMenu.classList.contains('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        const spans = mobileMenuBtn.querySelectorAll('span');
+        if (!isActive) {
+            // Animate to X
+            spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        } else {
+            // Reset to hamburger
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+    }
+    
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+    
+    // Close menu when clicking on overlay
+    overlay.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+    
+    // Close menu when clicking on a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+            toggleMenu();
+        });
+    });
+    
+    // Close menu with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+    
+    // Close menu when resizing to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const bodyImg = document.getElementById('body_img');
+    const bodyVideo = document.getElementById('body_video');
+    const bImg = document.getElementById('b_img');
+    const muteBtn = document.getElementById('mute_btn');
+    const skipBtn = document.getElementById('skip_btn');
+    
+    // Set video to autoplay when page loads
+    bodyVideo.muted = true;
+    bodyVideo.play().catch(error => {
+        console.log("Autoplay prevented:", error);
+        // Show fallback image if autoplay is blocked
+        bodyImg.classList.add('video-ended');
+    });
+    
+    // Video ended event
+    bodyVideo.addEventListener('ended', function() {
+        bodyImg.classList.add('video-ended');
+        this.style.display = 'none';
+    });
+    
+    // Mute/Unmute button
+    if (muteBtn) {
+        muteBtn.addEventListener('click', function() {
+            if (bodyVideo.muted) {
+                bodyVideo.muted = false;
+                this.textContent = '🔊';
+                // Try to play if it was paused
+                bodyVideo.play().catch(e => console.log("Play failed:", e));
+            } else {
+                bodyVideo.muted = true;
+                this.textContent = '🔇';
+            }
+        });
+    }
+    
+    // Skip button - immediately show image
+    if (skipBtn) {
+        skipBtn.addEventListener('click', function() {
+            bodyVideo.pause();
+            bodyImg.classList.add('video-ended');
+            bodyVideo.style.display = 'none';
+        });
+    }
+    
+    // Fallback: If video fails to load, show image
+    bodyVideo.addEventListener('error', function() {
+        console.log("Video failed to load");
+        bodyImg.classList.add('video-ended');
+        bodyVideo.style.display = 'none';
+    });
+    
+    // Optional: Replay on click after video ended
+    bodyImg.addEventListener('click', function() {
+        if (bodyImg.classList.contains('video-ended')) {
+            bodyImg.classList.remove('video-ended');
+            bodyVideo.style.display = 'block';
+            bodyVideo.currentTime = 0;
+            bodyVideo.muted = true;
+            muteBtn.textContent = '🔇';
+            bodyVideo.play().catch(e => console.log("Replay failed:", e));
+        }
+    });
+});
