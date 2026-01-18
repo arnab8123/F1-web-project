@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<title>Team Profile</title>
+
+<style>
+/* ================= ROOT ================= */
+:root{
+    --team-color:#dc0000;
+    --bg-dark:#000;
+    --text-main:aliceblue;
+    --font-main:"Orbitron",sans-serif;
+    --font-news:"Bebas Neue",sans-serif;
+    --font-header:"Titillium Web",sans-serif;
+    --radius:20px;
+    --transition:0.35s ease;
+}
+
+body{
+    margin:0;
+    background:var(--bg-dark);
+    color:var(--text-main);
+    font-family:var(--font-header);
+}
+
+/* ================= TEAM THEMES ================= */
+[data-team="ferrari"]{--team-color:#dc0000;}
+[data-team="mercedes"]{--team-color:#00d2be;}
+[data-team="redbull"]{--team-color:#1e41ff;}
+[data-team="mclaren"]{--team-color:#ff8000;}
+[data-team="aston"]{--team-color:#006f62;}
+/* Additional teams */
+[data-team="williams"]{
+    --team-color:#6bbada;   /* Williams Racing blue */
+}
+
+[data-team="alpine"]{
+    --team-color:#ff00ae;   /* Alpine electric blue */
+}
+
+[data-team="haas"]{
+    --team-color:#b6babd;   /* Haas titanium silver */
+}
+
+[data-team="sauber"]{
+    --team-color:#01C00E;   /* Kick Sauber neon green */
+}
+
+[data-team="rb"]{
+    --team-color:#5ebbe3;   /* Visa Cash App RB blue */
+}
+
+
+/* ================= HERO ================= */
+.team-hero{
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    padding:0 80px;
+    overflow:hidden;
+}
+
+.team-bg{
+    position:absolute;
+    inset:0;
+    background:url("teams/bg.jpg") center/cover no-repeat;
+    filter:brightness(0.25);
+    z-index:1;
+}
+
+.team-gradient{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at right,
+            color-mix(in srgb, var(--team-color) 35%, transparent),
+            transparent 70%
+        );
+    z-index:2;
+}
+
+.team-car{
+    position:absolute;
+    right:-10%;
+    bottom:-25%;
+    height:95%;
+    z-index:3;
+    transform:scale(0.85);
+}
+
+.team-info{
+    position:relative;
+    z-index:4;
+    max-width:600px;
+}
+
+.team-name{
+    font-family:var(--font-news);
+    font-size:90px;
+    letter-spacing:6px;
+}
+
+.team-base{
+    font-size:26px;
+    letter-spacing:2px;
+    opacity:0.8;
+}
+
+.team-year{
+    font-family:var(--font-main);
+    font-size:140px;
+    color:var(--team-color);
+    opacity:0.18;
+}
+
+/* ================= STATS ================= */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+    padding:80px;
+}
+
+.stat-card{
+    background:#111;
+    border-radius:var(--radius);
+    padding:35px;
+    text-align:center;
+    transition:transform var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 45px color-mix(in srgb, var(--team-color) 45%, transparent);
+}
+
+.stat-value{
+    font-family:var(--font-main);
+    font-size:52px;
+}
+
+/* ================= DRIVERS ================= */
+.team-drivers{
+    padding:80px;
+}
+
+.team-drivers h2{
+    font-family:var(--font-news);
+    font-size:50px;
+    letter-spacing:4px;
+}
+
+.driver-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.driver-card{
+    position:relative;
+    height:360px;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:#111;
+    cursor:pointer;
+}
+
+.driver-bg{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.2)
+    );
+    z-index:1;
+}
+
+.driver-card img{
+    position:absolute;
+    bottom:-20%;
+    left:50%;
+    transform:translateX(-50%);
+    height:120%;
+    z-index:2;
+    transition:transform 0.45s ease, bottom 0.45s ease;
+}
+
+.driver-card:hover img{
+    transform:translateX(-50%) scale(1.15);
+    bottom:-35%;
+}
+
+.driver-name{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    z-index:3;
+    font-family:var(--font-news);
+    font-size:32px;
+    letter-spacing:2px;
+}
+
+/* ================= TIMELINE ================= */
+.timeline{
+    padding:80px;
+}
+
+.timeline h2{
+    font-family:var(--font-news);
+    font-size:50px;
+    letter-spacing:4px;
+}
+
+.timeline-track{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.season{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s ease;
+    background:#111;
+    padding:30px;
+    border-radius:var(--radius);
+}
+
+.season.show{
+    opacity:1;
+    transform:none;
+}
+
+.season span{
+    font-family:var(--font-main);
+    color:var(--team-color);
+}
+
+/* ================= DIVIDER ================= */
+.divider{
+    height:6px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--team-color),
+        transparent
+    );
+    margin:100px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+<section class="team-hero" data-team="ferrari">
+    <div class="team-bg"></div>
+    <div class="team-gradient"></div>
+
+    <img class="team-car" src="teams/car.png" alt="Car">
+
+    <div class="team-info">
+        <div class="team-name">SCUDERIA FERRARI</div>
+        <div class="team-base">MARANELLO, ITALY</div>
+        <div class="team-year">1950</div>
+    </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+    <div class="stat-card"><div class="stat-value" data-value="16">0</div>WCC TITLES</div>
+    <div class="stat-card"><div class="stat-value" data-value="245">0</div>RACE WINS</div>
+    <div class="stat-card"><div class="stat-value" data-value="800">0</div>PODIUMS</div>
+    <div class="stat-card"><div class="stat-value" data-value="1950">0</div>DEBUT</div>
+</section>
+
+<!-- ================= DRIVERS ================= -->
+<section class="team-drivers">
+    <h2>DRIVERS</h2>
+    <div class="driver-grid">
+        <div class="driver-card">
+            <div class="driver-bg"></div>
+            <img src="drivers/driver1.png">
+            <div class="driver-name">CHARLES LECLERC</div>
+        </div>
+        <div class="driver-card">
+            <div class="driver-bg"></div>
+            <img src="drivers/driver2.png">
+            <div class="driver-name">LEWIS HAMILTON</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section class="timeline">
+    <h2>SEASONS</h2>
+    <div class="timeline-track">
+        <div class="season"><span>1950</span> – Ferrari debuts in Formula 1</div>
+        <div class="season"><span>2000</span> – Start of Schumacher era</div>
+        <div class="season"><span>2004</span> – Most dominant F1 season</div>
+        <div class="season"><span>2025</span> – New era begins</div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================= SCRIPTS ================= -->
+<script>
+/* COUNTERS */
+const counters=document.querySelectorAll(".stat-value");
+const animateCounter=el=>{
+    const t=+el.dataset.value;
+    let c=0;
+    const s=t/80;
+    const u=()=>{
+        c+=s;
+        if(c<t){el.textContent=Math.floor(c);requestAnimationFrame(u);}
+        else el.textContent=t;
+    };u();
+};
+const counterObserver=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting){animateCounter(x.target);counterObserver.unobserve(x.target);}});
+},{threshold:.6});
+counters.forEach(c=>counterObserver.observe(c));
+
+/* TIMELINE */
+const seasons=document.querySelectorAll(".season");
+const timelineObserver=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("show");});
+},{threshold:.3});
+seasons.forEach(s=>timelineObserver.observe(s));
+
+/* SCROLL SYNC CAR */
+const car=document.querySelector(".team-car");
+window.addEventListener("scroll",()=>{
+    const sc=window.scrollY;
+    const p=Math.min(sc/600,1);
+    car.style.transform=`scale(${0.85+p*0.15}) translateX(${-p*40}px)`;
+});
+</script>
+
+</body>
+</html>
